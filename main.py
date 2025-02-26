@@ -41,6 +41,30 @@ import pandas as pd
 # Convert new data frame to csv
 # new_data.to_csv('new_data.csv')
 
+"""
+Goal: By using data analysis on the dataset of the squirrel data, extract how many squirrels are there base
+on their fur colors (Black, Cinnamon, Red)
+"""
+squirrel_data = pd.read_csv('2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv')
+
+cinnamon_fur = squirrel_data[squirrel_data['Primary Fur Color']== 'Cinnamon']
+cinnamon_squirrels_count = len(cinnamon_fur['Unique Squirrel ID'].to_list())
+
+black_fur = squirrel_data[squirrel_data['Primary Fur Color']== 'Black']
+black_squirrels_count = len(black_fur['Unique Squirrel ID'].to_list())
+
+gray_fur = squirrel_data[squirrel_data['Primary Fur Color']== 'Gray']
+gray_squirrels_count = len(gray_fur['Unique Squirrel ID'].to_list())
+
+squirrel_fur_count:dict = {'Primary Fur Color':['Cinnamon', 'Black', 'Gray'],
+                           'Count':[],
+                           }
+squirrel_fur_count['Count'].append(cinnamon_squirrels_count)
+squirrel_fur_count['Count'].append(black_squirrels_count)
+squirrel_fur_count['Count'].append(gray_squirrels_count)
+
+squirrel_fur_count_df = pd.DataFrame(squirrel_fur_count) # Convert Dictionary to DataFrame
+# squirrel_fur_count_df.to_csv('squirrel_fur_count.csv') # Convert DataFrame to CSV
 
 
 
